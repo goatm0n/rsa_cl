@@ -1,6 +1,6 @@
 use clap::Parser;
 use std::path::PathBuf;
-use rsa_rs::keys::keypair::{KeyPair, PublicKey, PrivateKey};
+use rsa_rs::keys::keypair::KeyPair;
 use rsa_rs::encryption::encrypt::encrypt_string;
 use rsa_rs::encryption::decrypt::decrypt_string;
 
@@ -114,11 +114,9 @@ fn read_vec_u128(path: &PathBuf) -> Vec<u128> {
 fn handle_encryption(file_path: PathBuf, key_path: PathBuf) {
     let file_content = std::fs::read_to_string(&file_path).expect("could not read file");
     if file_content.len() == 0 {panic!("empty-file: nothing to encrypt")}
-
     let key_pair = KeyPair::generate_key_pair(65537);
     write_key_pair_csv(key_path, &key_pair);
     let public_key = key_pair.public_key();
-
     let enc_vec = encrypt_string(&file_content, public_key);
     write_vec_u128(file_path, enc_vec); 
 }
@@ -133,18 +131,13 @@ fn handle_decryption(file_path: PathBuf, key_path: PathBuf) {
 
 fn main() {
     let args = Cli::parse();
-
-    // parse file paths and get contents
     let file_path = args.file_path();
     let key_path = args.key_path();
- 
-    
     match args.mode.as_str() {
         "encrypt" => handle_encryption(file_path, key_path),
         "decrypt" => handle_decryption(file_path, key_path),
         _ => panic!("invalid mode; options = [encrypt, decrypt]")
     } 
-
 }
 
 
