@@ -214,15 +214,46 @@ version = "0.1.0"
 dependencies = [
  "clap",
  "rsa_rs",
+ "rsa_utils",
 ]
 
 [[package]]
 name = "rsa_rs"
-version = "0.1.2"
+version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "eb9e84f4aa78d07aeb3985e03d012b895f1122357dfa4e3495ddd8cb769656d0"
+checksum = "76fe2d322f3e63a66be6e0c5d6ee18d1e5501ca96b1db7664aaff3821ea83b19"
 dependencies = [
  "rand",
+ "serde",
+]
+
+[[package]]
+name = "rsa_utils"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "973487ea5f28efec3ec55d72aa6f33eeecb0f444e8a319eb903bb1fbff1e5430"
+dependencies = [
+ "rsa_rs",
+]
+
+[[package]]
+name = "serde"
+version = "1.0.144"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0f747710de3dcd43b88c9168773254e809d8ddbdf9653b84e2554ab219f17860"
+dependencies = [
+ "serde_derive",
+]
+
+[[package]]
+name = "serde_derive"
+version = "1.0.144"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "94ed3a816fb1d101812f83e789f888322c34e291f894f19590dc310963e87a00"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
 ]
 
 [[package]]
