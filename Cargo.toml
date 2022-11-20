@@ -1,11 +1,11 @@
 [package]
 name = "rsa_cl"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 rsa_rs = "0.2.0"
-rsa_utils = "0.1.0"
+rsa_utils = "0.2.0"
 clap = { version = "3.0", features = ["derive"] }
